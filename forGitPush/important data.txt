@@ -1,0 +1,3 @@
+mongoimport --host localhost --db BKBASE --collection questions --file C:\Users\bhara\Desktop\workspace\db.json
+
+mongoexport --db BKBASE --collection questions --out output.json

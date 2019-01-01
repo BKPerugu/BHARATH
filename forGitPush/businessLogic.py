@@ -31,8 +31,8 @@ def parseDF(df_R1,df_R2,df_R3,df_R4,jsonFile,survey,company):
       js["R2"]["Physical"].append({'qid':row["qid"], 'question': row["question"], 'cid': row["category_id"]})
 
     R2_org=df_R2[df_R2['subsector']=='Organisational']
-    for index, row in R2_org.iterrows():
-      js["R2"]["Organisational"].append({'qid':row["qid"], 'question': row["question"], 'cid': row["category_id"]})
+    for index, row in R2_org():
+      js["R2"]["Organisational"].aiterrowsppend({'qid':row["qid"], 'question': row["question"], 'cid': row["category_id"]})
 
     R2_tec=df_R2[df_R2['subsector']=='Technical']
     for index, row in R2_tec.iterrows():

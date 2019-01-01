@@ -1,3 +1,32 @@
 mongoimport --host localhost --db BKBASE --collection questions --file C:\Users\bhara\Desktop\workspace\db.json
 
 mongoexport --db BKBASE --collection questions --out output.json
+
+db.users.find({'J649081.R4.Physical.cid':1 },{'J649081.R4.Physical.cid':1 })
+
+now query/projection has to be matched with certain value using $match or $matchElem
+
+db.users.find({'details.R4.Physical.cid': 2} , {'details.R1':1})
+
+db.users.aggregate([
+{$match:{"userid":'J649081'}},
+{
+            $unwind : "$rows"
+        }, {
+            $match : {
+                "rows.cid" : {
+                    $eq : 1
+                }                
+            }
+        }
+        
+        ])
+
+unwind, match, project in aggreagte
+
+con= [{"$match":{"userid":'J649081'}},{"$unwind" : "$rows"}, {"$match" : {"rows.cid" : {"$eq" : 3} }}]
+a=db.users.aggregate(con)
+
+for i in a:
+    print(i)
+    print(i['rows']['cid'])

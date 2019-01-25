@@ -1,0 +1,112 @@
+{
+
+    "survey" : "CGI",
+    "company" : "MySurvey",
+    "R1" : {
+        "Physical" : [ 
+            {
+                "qid" : 1,
+                "question" : "Question1",
+                "cid" : 1
+            }, 
+            {
+                "qid" : 2,
+                "question" : "Question2",
+                "cid" : 1
+            }, 
+            {
+                "qid" : 3,
+                "question" : "Question3",
+                "cid" : 2
+            }, 
+            {
+                "qid" : 4,
+                "question" : "Question4",
+                "cid" : 2
+            }
+        ],
+        "Organisational" : [ 
+            {
+                "qid" : 1,
+                "question" : "Question5",
+                "cid" : 3
+            }, 
+            {
+                "qid" : 1,
+                "question" : "Question6",
+                "cid" : 3
+            }, 
+            {
+                "qid" : 2,
+                "question" : "Question7",
+                "cid" : 4
+            }, 
+            {
+                "qid" : 3,
+                "question" : "Question8",
+                "cid" : 5
+            }
+        ],
+        "Technical" : []
+    },
+    "R2" : {
+        "Physical" : [ 
+            {
+                "qid" : 1,
+                "question" : "Question9",
+                "cid" : 6
+            }
+        ],
+        "Organisational" : [ 
+            {
+                "qid" : 1,
+                "question" : "Question10",
+                "cid" : 7
+            }, 
+            {
+                "qid" : 2,
+                "question" : "Question11",
+                "cid" : 7
+            }
+        ],
+        "Technical" : []
+    },
+    "R3" : {
+        "Physical" : [ 
+            {
+                "qid" : 1,
+                "question" : "Question12",
+                "cid" : 8
+            }, 
+            {
+                "qid" : 1,
+                "question" : "Question13",
+                "cid" : 8
+            }
+        ],
+        "Organisational" : [],
+        "Technical" : []
+    },
+    "R4" : {
+        "Physical" : [ 
+            {
+                "qid" : 1,
+                "question" : "Question14",
+                "cid" : 9
+            }
+        ],
+        "Organisational" : [ 
+            {
+                "qid" : 1,
+                "question" : "Question15",
+                "cid" : 10
+            }, 
+            {
+                "qid" : 2,
+                "question" : "Question16",
+                "cid" : 10
+            }
+        ],
+        "Technical" : []
+    }
+}

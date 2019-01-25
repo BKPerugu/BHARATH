@@ -27,7 +27,6 @@ http://127.0.0.1:5000/chartsOne?survey='ABC Name'&company='XVC Name'userid='J649
 
 
 
-
 db.users.aggregate([
 {$match:{"userid":'1234'}},
 {

@@ -77,12 +77,12 @@ def chartsOne():
     survey = request.args.get('survey')
     company = request.args.get('company')
     userid= request.args.get('userid')
-    host,base,colection,user,pwd=bl.mongoInit()
+    host,base,colection,dbuser,pwd=bl.mongoInit()
 
     sectors=['R1','R2','R3','R4']
     df=pd.DataFrame(columns=['sector','subsector','cid','qid','qscore','qconfidence'])
     for sector in sectors:
-        document= bl.getSurveyDetails(userid,survey,company,host,base,colection,user,pwd,sector)
+        document= bl.getSurveyDetails(userid,survey,company,host,base,colection,dbuser,pwd,sector)
         for i in document:
             df=df.append({'sector': i['rows']['sector'],'subsector':i['rows']['subsector'],'cid':i['rows']['cid'],'qid':i['rows']['qid'],'qscore':i['rows']['qscore'], 'qconfidence':i['rows']['qconfidence']},ignore_index=True)
     df=df.sort_values(['sector','subsector'])

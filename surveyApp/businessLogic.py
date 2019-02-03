@@ -2,6 +2,7 @@ import json
 import smtplib
 import sqlalchemy
 from pymongo import MongoClient
+import pprint
 
 # access row by row and update the json file
 def parseDF(df_R1,df_R2,df_R3,df_R4,jsonFile,survey,company):
@@ -137,16 +138,20 @@ def pushSurvey(mail_list):
         smtpObj.sendmail(sender, receivers, message)
         print("Successfully sent email")
 
-
 def getSurveyDetails(userid,survey,company,host,base,colection,user,pwd,sector):
    col=mongoConnect(host,base,colection,user,pwd)
-   query = [{'$match':{"userid":'1234'}},{'$unwind' : "$rows" }, { '$match' : { "rows.sector" : { '$eq' : sector  } }} ]
+   uid='%s' % userid
+   uid=uid.strip("'")
+   query = [{'$match':{'userid':uid}},{'$unwind' : "$rows" }, { '$match' : { "rows.sector" : { '$eq' : sector  } }} ]
+
    document = col.aggregate(query)
+   print(userid, sector)
    return document
 
 def getSurveyDetailsByCid(userid,survey,company,host,base,colection,user,pwd,subsector,sector):
    col=mongoConnect(host,base,colection,user,pwd)
-   query = [{'$match':{"userid":userid}},{'$unwind' : "$rows" }, { '$match' : { "rows.subsector" : { '$eq' : subsector  }, "rows.sector" : {'$eq' : sector} }} ]
+
+   query = [{'$match':{"userid":userid.strip('"')}},{'$unwind' : "$rows" }, { '$match' : { "rows.subsector" : { '$eq' : subsector  }, "rows.sector" : {'$eq' : sector} }} ]
    document = col.aggregate(query)
    return document
 
@@ -157,7 +162,3 @@ def mongoInit():
     user='root'
     pwd='root'
     return host,base,colection,user,pwd
-
-
-
-

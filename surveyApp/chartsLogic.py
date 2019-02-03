@@ -16,9 +16,9 @@ def calculate(R_df):
   subs=['Physical','Organisational','Technical']
   host,base,colection,user,pwd=bl.mongoInit()
   ## userid,survey,company  should be passed from UI with API
-  userid='1234'
-  company='XVC Name'
-  survey='ABC Name'
+  userid='588'
+  company='ITH'
+  survey='Quater 1'
 
   #print(phy)
   x=df=pd.DataFrame()
@@ -32,15 +32,12 @@ def calculate(R_df):
         df=subdf[subdf.cid==i]
         df['cscore']=subscore
         x=pd.concat([df, x], ignore_index=True)
-  df=x # df has mean values of cscore ie category score in R1
-  print(df)
+  df=x.sort_values(['cid']) # df has mean values of cscore ie category score in R1
   return df
 
   """document=bl.getSurveyDetailsByCid(userid,survey,company,host,base,colection,user,pwd,subsector='Physical',sector='R1')
   for i in document:
       print(i)"""
-
-
 
   """
   phycid=len(list(R_df[R_df['subsector']=='Physical'].cid.unique()))

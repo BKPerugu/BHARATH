@@ -1,12 +1,11 @@
 {
-
-    "survey" : "ABC Name",
-    "company" : "XVC Name",
-    "userid" : "1234",
-    "username" : "qwerty",
-    "emailid" : "abc@gmail.com",
-    "department" : "dept1 Name",
-    "role" : "Manager",
+    "survey" : "Quarter 1",
+    "company" : "ITH",
+    "userid" : "588",
+    "username" : "Bharath",
+    "emailid" : "Bharath@gmail.com",
+    "department" : "Trade",
+    "role" : "Lead",
     "rows" : [ 
         {
             "cid" : 1,
@@ -19,7 +18,7 @@
         {
             "cid" : 1,
             "qid" : 2,
-            "qscore" : 4,
+            "qscore" : 2,
             "qconfidence" : 3,
             "sector" : "R1",
             "subsector" : "Physical"
@@ -27,7 +26,7 @@
         {
             "cid" : 2,
             "qid" : 1,
-            "qscore" : 4,
+            "qscore" : 1,
             "qconfidence" : 3,
             "sector" : "R1",
             "subsector" : "Physical"
@@ -35,15 +34,7 @@
         {
             "cid" : 3,
             "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R1",
-            "subsector" : "Technical"
-        }, 
-        {
-            "cid" : 3,
-            "qid" : 1,
-            "qscore" : 4,
+            "qscore" : 3,
             "qconfidence" : 3,
             "sector" : "R1",
             "subsector" : "Physical"
@@ -51,133 +42,133 @@
         {
             "cid" : 4,
             "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R1",
-            "subsector" : "Technical"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R1",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R1",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R1",
-            "subsector" : "Organisational"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 2,
-            "qscore" : 1,
-            "qconfidence" : 3,
-            "sector" : "R1",
-            "subsector" : "Organisational"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 3,
             "qscore" : 2,
             "qconfidence" : 3,
             "sector" : "R1",
-            "subsector" : "Organisational"
-        }, 
-        {
-            "cid" : 2,
-            "qid" : 1,
-            "qscore" : 2,
-            "qconfidence" : 3,
-            "sector" : "R1",
-            "subsector" : "Organisational"
-        }, 
-        {
-            "cid" : 2,
-            "qid" : 2,
-            "qscore" : 1,
-            "qconfidence" : 3,
-            "sector" : "R1",
-            "subsector" : "Organisational"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R2",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 2,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R2",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 2,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R2",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 3,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R2",
             "subsector" : "Technical"
-        }, 
-        {
-            "cid" : 3,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R2",
-            "subsector" : "Physical"
         }, 
         {
             "cid" : 4,
+            "qid" : 2,
+            "qscore" : 4,
+            "qconfidence" : 2,
+            "sector" : "R1",
+            "subsector" : "Technical"
+        }, 
+        {
+            "cid" : 5,
             "qid" : 1,
             "qscore" : 4,
+            "qconfidence" : 3,
+            "sector" : "R1",
+            "subsector" : "Technical"
+        }, 
+        {
+            "cid" : 5,
+            "qid" : 2,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R1",
+            "subsector" : "Technical"
+        }, 
+        {
+            "cid" : 6,
+            "qid" : 1,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R1",
+            "subsector" : "Organisational"
+        }, 
+        {
+            "cid" : 7,
+            "qid" : 1,
+            "qscore" : 3,
+            "qconfidence" : 3,
+            "sector" : "R1",
+            "subsector" : "Organisational"
+        }, 
+        {
+            "cid" : 7,
+            "qid" : 2,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R1",
+            "subsector" : "Organisational"
+        }, 
+        {
+            "cid" : 7,
+            "qid" : 3,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R1",
+            "subsector" : "Organisational"
+        }, 
+        {
+            "cid" : 8,
+            "qid" : 1,
+            "qscore" : 4,
+            "qconfidence" : 3,
+            "sector" : "R2",
+            "subsector" : "Physical"
+        }, 
+        {
+            "cid" : 8,
+            "qid" : 2,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R2",
+            "subsector" : "Physical"
+        }, 
+        {
+            "cid" : 9,
+            "qid" : 1,
+            "qscore" : 3,
+            "qconfidence" : 3,
+            "sector" : "R2",
+            "subsector" : "Physical"
+        }, 
+        {
+            "cid" : 10,
+            "qid" : 1,
+            "qscore" : 1,
+            "qconfidence" : 3,
+            "sector" : "R2",
+            "subsector" : "Physical"
+        }, 
+        {
+            "cid" : 11,
+            "qid" : 1,
+            "qscore" : 1,
             "qconfidence" : 3,
             "sector" : "R2",
             "subsector" : "Technical"
         }, 
         {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
+            "cid" : 11,
+            "qid" : 2,
+            "qscore" : 2,
+            "qconfidence" : 2,
             "sector" : "R2",
-            "subsector" : "Physical"
+            "subsector" : "Technical"
         }, 
         {
-            "cid" : 1,
+            "cid" : 12,
             "qid" : 1,
-            "qscore" : 4,
+            "qscore" : 3,
             "qconfidence" : 3,
             "sector" : "R2",
-            "subsector" : "Physical"
+            "subsector" : "Technical"
         }, 
         {
-            "cid" : 1,
+            "cid" : 12,
+            "qid" : 2,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R2",
+            "subsector" : "Technical"
+        }, 
+        {
+            "cid" : 13,
             "qid" : 1,
             "qscore" : 4,
             "qconfidence" : 3,
@@ -185,7 +176,15 @@
             "subsector" : "Organisational"
         }, 
         {
-            "cid" : 1,
+            "cid" : 14,
+            "qid" : 1,
+            "qscore" : 3,
+            "qconfidence" : 3,
+            "sector" : "R2",
+            "subsector" : "Organisational"
+        }, 
+        {
+            "cid" : 14,
             "qid" : 2,
             "qscore" : 1,
             "qconfidence" : 3,
@@ -193,7 +192,7 @@
             "subsector" : "Organisational"
         }, 
         {
-            "cid" : 1,
+            "cid" : 14,
             "qid" : 3,
             "qscore" : 2,
             "qconfidence" : 3,
@@ -201,47 +200,55 @@
             "subsector" : "Organisational"
         }, 
         {
-            "cid" : 2,
+            "cid" : 15,
             "qid" : 1,
             "qscore" : 2,
             "qconfidence" : 3,
-            "sector" : "R2",
-            "subsector" : "Organisational"
+            "sector" : "R3",
+            "subsector" : "Physical"
         }, 
         {
-            "cid" : 2,
+            "cid" : 15,
             "qid" : 2,
             "qscore" : 1,
             "qconfidence" : 3,
-            "sector" : "R2",
-            "subsector" : "Organisational"
+            "sector" : "R3",
+            "subsector" : "Physical"
         }, 
         {
-            "cid" : 1,
+            "cid" : 16,
             "qid" : 1,
-            "qscore" : 4,
+            "qscore" : 2,
             "qconfidence" : 3,
             "sector" : "R3",
             "subsector" : "Physical"
         }, 
         {
-            "cid" : 1,
+            "cid" : 17,
+            "qid" : 1,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R3",
+            "subsector" : "Physical"
+        }, 
+        {
+            "cid" : 18,
+            "qid" : 1,
+            "qscore" : 5,
+            "qconfidence" : 3,
+            "sector" : "R3",
+            "subsector" : "Technical"
+        }, 
+        {
+            "cid" : 18,
             "qid" : 2,
-            "qscore" : 4,
-            "qconfidence" : 3,
+            "qscore" : 5,
+            "qconfidence" : 2,
             "sector" : "R3",
-            "subsector" : "Physical"
+            "subsector" : "Technical"
         }, 
         {
-            "cid" : 2,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R3",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 3,
+            "cid" : 19,
             "qid" : 1,
             "qscore" : 4,
             "qconfidence" : 3,
@@ -249,47 +256,31 @@
             "subsector" : "Technical"
         }, 
         {
-            "cid" : 3,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R3",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 4,
-            "qid" : 1,
-            "qscore" : 4,
+            "cid" : 19,
+            "qid" : 2,
+            "qscore" : 1,
             "qconfidence" : 3,
             "sector" : "R3",
             "subsector" : "Technical"
         }, 
         {
-            "cid" : 1,
+            "cid" : 20,
             "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R3",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R3",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
+            "qscore" : 2,
             "qconfidence" : 3,
             "sector" : "R3",
             "subsector" : "Organisational"
         }, 
         {
-            "cid" : 1,
+            "cid" : 21,
+            "qid" : 1,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R3",
+            "subsector" : "Organisational"
+        }, 
+        {
+            "cid" : 21,
             "qid" : 2,
             "qscore" : 1,
             "qconfidence" : 3,
@@ -297,55 +288,63 @@
             "subsector" : "Organisational"
         }, 
         {
-            "cid" : 1,
+            "cid" : 21,
             "qid" : 3,
-            "qscore" : 2,
+            "qscore" : 3,
             "qconfidence" : 3,
             "sector" : "R3",
             "subsector" : "Organisational"
         }, 
         {
-            "cid" : 2,
+            "cid" : 22,
             "qid" : 1,
             "qscore" : 2,
             "qconfidence" : 3,
-            "sector" : "R3",
-            "subsector" : "Organisational"
+            "sector" : "R4",
+            "subsector" : "Physical"
         }, 
         {
-            "cid" : 2,
+            "cid" : 22,
             "qid" : 2,
             "qscore" : 1,
             "qconfidence" : 3,
-            "sector" : "R3",
-            "subsector" : "Organisational"
+            "sector" : "R4",
+            "subsector" : "Physical"
         }, 
         {
-            "cid" : 1,
+            "cid" : 23,
             "qid" : 1,
-            "qscore" : 4,
+            "qscore" : 2,
             "qconfidence" : 3,
             "sector" : "R4",
             "subsector" : "Physical"
         }, 
         {
-            "cid" : 1,
+            "cid" : 24,
+            "qid" : 1,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R4",
+            "subsector" : "Physical"
+        }, 
+        {
+            "cid" : 25,
+            "qid" : 1,
+            "qscore" : 5,
+            "qconfidence" : 3,
+            "sector" : "R4",
+            "subsector" : "Technical"
+        }, 
+        {
+            "cid" : 25,
             "qid" : 2,
-            "qscore" : 4,
-            "qconfidence" : 3,
+            "qscore" : 5,
+            "qconfidence" : 2,
             "sector" : "R4",
-            "subsector" : "Physical"
+            "subsector" : "Technical"
         }, 
         {
-            "cid" : 2,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R4",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 3,
+            "cid" : 26,
             "qid" : 1,
             "qscore" : 4,
             "qconfidence" : 3,
@@ -353,47 +352,31 @@
             "subsector" : "Technical"
         }, 
         {
-            "cid" : 3,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R4",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 4,
-            "qid" : 1,
-            "qscore" : 4,
+            "cid" : 26,
+            "qid" : 2,
+            "qscore" : 1,
             "qconfidence" : 3,
             "sector" : "R4",
             "subsector" : "Technical"
         }, 
         {
-            "cid" : 1,
+            "cid" : 27,
             "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R4",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
-            "qconfidence" : 3,
-            "sector" : "R4",
-            "subsector" : "Physical"
-        }, 
-        {
-            "cid" : 1,
-            "qid" : 1,
-            "qscore" : 4,
+            "qscore" : 2,
             "qconfidence" : 3,
             "sector" : "R4",
             "subsector" : "Organisational"
         }, 
         {
-            "cid" : 1,
+            "cid" : 28,
+            "qid" : 1,
+            "qscore" : 2,
+            "qconfidence" : 3,
+            "sector" : "R4",
+            "subsector" : "Organisational"
+        }, 
+        {
+            "cid" : 28,
             "qid" : 2,
             "qscore" : 1,
             "qconfidence" : 3,
@@ -401,25 +384,9 @@
             "subsector" : "Organisational"
         }, 
         {
-            "cid" : 1,
+            "cid" : 28,
             "qid" : 3,
-            "qscore" : 2,
-            "qconfidence" : 3,
-            "sector" : "R4",
-            "subsector" : "Organisational"
-        }, 
-        {
-            "cid" : 2,
-            "qid" : 1,
-            "qscore" : 2,
-            "qconfidence" : 3,
-            "sector" : "R4",
-            "subsector" : "Organisational"
-        }, 
-        {
-            "cid" : 2,
-            "qid" : 2,
-            "qscore" : 1,
+            "qscore" : 3,
             "qconfidence" : 3,
             "sector" : "R4",
             "subsector" : "Organisational"

@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+import requests
 import businessLogic as bl
 import os
 import pandas as pd
@@ -8,6 +9,7 @@ import functools as ft
 
 sectors=['R1','R2','R3','R4']
 subsectors=['Physical','Organisational','Technical']
+df=pd.DataFrame()
 app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -18,17 +20,17 @@ def login():
 ## Redirect to login page
 
 
-@app.route('/questionsUpload', methods=['GET', 'POST'])
+@app.route('/questionsUpload', methods=['GET'])
 def questionsUpload():
     survey = request.args.get('survey')
     company = request.args.get('company')
     command = 'python C:/Users/bhara/PycharmProjects/Survey/questionsExtraction.py ' + company+ ' ' +survey
     os.system(command)
-    os.system('python C:/Users/bhara/PycharmProjects/Survey/questionsExtractions.py {} {}'.format(company,survey))
+    ###os.system('python C:/Users/bhara/PycharmProjects/Survey/questionsExtractions.py {} {}'.format(company,survey))
     return 'Upload Done -- replace this with web page'
 
 
-@app.route('/usersUpload', methods=['GET', 'POST'])
+@app.route('/usersUpload', methods=['GET'])
 def usersUpload():
     survey = request.args.get('survey')
     company = request.args.get('company')
@@ -38,7 +40,7 @@ def usersUpload():
     return 'Upload Done -- replace this with web page'
 
 
-@app.route('/releaseSurvey', methods=['GET', 'POST'])
+@app.route('/releaseSurvey', methods=['GET'])
 def releaseSurvey():
     survey = request.args.get('survey')
     company = request.args.get('company')
@@ -47,7 +49,7 @@ def releaseSurvey():
     mail_list=list(bl.getMails(survey,company,department))
     bl.pushSurvey(mail_list)
 
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET'])
 def upload():
     folder_name = request.form['superhero']
     '''
@@ -75,7 +77,7 @@ def upload():
     return render_template("complete.html", image_name=filename)
 
 
-@app.route('/chartsOne', methods=['GET', 'POST'])
+@app.route('/chartsOne', methods=['GET'])
 def chartsOne():
 
     survey = request.args.get('survey')
@@ -174,9 +176,24 @@ def chartsOne():
     dfs=[filter1,filter2,filter3,filter4,filter5,filter6,filter7,filter8,filter9,filter10,filter11,filter12]
     df=pd.concat(dfs)
 
-    print(df)
-    return 'Done'
+    js=df.to_json()
+#    print(df)
+    return js
 
+
+
+
+
+@app.route('/getSinglePie', methods=['GET'])
+def getSinglePie():
+
+
+    r = requests.get("http://127.0.0.1:5000/chartsOne?survey='Quarter%201'&company='ITH'&userid='588'")
+    jsonres=r.json()
+    df=pd.DataFrame(jsonres)
+
+  #  df= chartsOne(survey='Quarter%201',company='ITH',userid='588')
+    return "Done"
 
 
 

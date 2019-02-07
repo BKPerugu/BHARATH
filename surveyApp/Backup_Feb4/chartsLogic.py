@@ -33,7 +33,7 @@ def calculate(R_df):
         x=pd.concat([df, x], ignore_index=True)
         print(subcid)
 
-  df=x.sort_values(['cid']) # df has mean values of cscore i.e category score in R1
+  #df=x.sort_values(['cid']) # df has mean values of cscore i.e category score in R1
   print(df)
   return df
 

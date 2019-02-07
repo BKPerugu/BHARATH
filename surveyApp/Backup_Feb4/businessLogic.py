@@ -2,6 +2,7 @@ import json
 import smtplib
 import sqlalchemy
 from pymongo import MongoClient
+import pprint
 
 # access row by row and update the json file
 def parseDF(df_R1,df_R2,df_R3,df_R4,jsonFile,survey,company):
@@ -144,6 +145,7 @@ def getSurveyDetails(userid,survey,company,host,base,colection,user,pwd,sector):
    query = [{'$match':{'userid':uid}},{'$unwind' : "$rows" }, { '$match' : { "rows.sector" : { '$eq' : sector  } }} ]
 
    document = col.aggregate(query)
+   print(userid, sector)
    return document
 
 def getSurveyDetailsByCid(userid,survey,company,host,base,colection,user,pwd,subsector,sector):

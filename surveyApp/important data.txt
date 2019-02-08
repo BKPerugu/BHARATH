@@ -23,8 +23,8 @@ db.users.aggregate([
         ])
 
 APIs:
-127.0.0.1:5000/chartsOne?survey='Quarter%201'&company='ITH'&userid='588'
-
+http://127.0.0.1:5000/chartsOne?survey='Quarter%201'&company='ITH'&userid='588'
+http://127.0.0.1:5000/getSinglePie?survey='Quarter%201'&company='ITH'&userid='588'
 
 
 db.users.aggregate([

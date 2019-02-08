@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import mpld3 as mp
 import businessLogic as bl
 import pandas as pd
+import json
 
 
 def calculate(R_df):
@@ -37,12 +38,20 @@ def calculate(R_df):
   print(df)
   return df
 
-  """document=bl.getSurveyDetailsByCid(userid,survey,company,host,base,colection,user,pwd,subsector='Physical',sector='R1')
-  for i in document:
-      print(i)"""
 
-  """
-  phycid=len(list(R_df[R_df['subsector']=='Physical'].cid.unique()))
-  orgcid=len(list(R_df[R_df['subsector']=='Physical'].cid.unique()))
-  techcid=len(list(R_df[R_df['subsector']=='Physical'].cid.unique()))
-  """
+def pie(df):
+
+    pieR1=df[df['sector']=='R1']['avgsectscore'].unique()
+    pieR1= round(float(pieR1),2)
+
+    pieR2=df[df['sector']=='R2']['avgsectscore'].unique()
+    pieR2= round(float(pieR2),2)
+
+    pieR3=df[df['sector']=='R3']['avgsectscore'].unique()
+    pieR3= round(float(pieR3),2)
+
+    pieR4=df[df['sector']=='R4']['avgsectscore'].unique()
+    pieR4= round(float(pieR4),2)
+
+    data = json.dumps({'R1': pieR1, 'R2': pieR2, 'R3':pieR3, 'R4':pieR4})
+    return data

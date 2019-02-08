@@ -4,6 +4,7 @@ import businessLogic as bl
 import os
 import pandas as pd
 import chartsLogic as cl
+import json
 import numpy as np
 import functools as ft
 
@@ -187,13 +188,17 @@ def chartsOne():
 @app.route('/getSinglePie', methods=['GET'])
 def getSinglePie():
 
-
-    r = requests.get("http://127.0.0.1:5000/chartsOne?survey='Quarter%201'&company='ITH'&userid='588'")
+    survey = request.args.get('survey')
+    company = request.args.get('company')
+    userid= request.args.get('userid')
+    #r = requests.get("http://127.0.0.1:5000/chartsOne?survey='Quarter%201'&company='ITH'&userid='588'")
+    r = requests.get("http://127.0.0.1:5000/chartsOne?survey={}&company={}&userid={}".format(survey,company,userid))
     jsonres=r.json()
     df=pd.DataFrame(jsonres)
 
-  #  df= chartsOne(survey='Quarter%201',company='ITH',userid='588')
-    return "Done"
+    data=cl.pie(df)
+
+    return data
 
 
 

@@ -16,15 +16,21 @@ execution: python usersExtraction.py surveyName companyName
 """
 
 import pandas as pd
-import sys
+import sys,os
 import sqlalchemy
 
 
 survey = sys.argv[1]
 cmp = sys.argv[2]
+filename = sys.argv[3]
+
+#Needs to be updated from config file
+path='C:/Users/bhara/Desktop/workspace'
+
+filepath=os.path.join(path, filename)
 
 # Parsing excel data
-df = pd.read_excel('C:/Users/bhara/Desktop/workspace/user_details.xlsx')
+df = pd.read_excel(path+'/'+filename)
 print(df)
 #Parsing data from excel
 df=df.sort_values(by ='username', ascending=True)

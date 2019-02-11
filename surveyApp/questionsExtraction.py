@@ -1,10 +1,16 @@
 import pandas as pd
 import businessLogic as bl
-import sys
+import sys, os
 from shutil import copyfile
 
 survey = sys.argv[1]
 company = sys.argv[2]
+filename = sys.argv[3]
+
+#Needs to be updated from config file
+path='C:/Users/bhara/Desktop/workspace'
+
+filepath=os.path.join(path, filename)
 
 #Getting timestamp
 backup=bl.getTimeStamp()
@@ -15,7 +21,7 @@ jsonFile= 'C:/Users/bhara/Desktop/workspace/db_{}.json'.format(backup)
 copyfile(jFile, jsonFile)
 
 # Parsing excel data
-xl = pd.read_excel('C:/Users/bhara/Desktop/workspace/questions.xlsx')
+xl = pd.read_excel(path+'/'+filename)
 
 #Parsing and divding into sector chunks of data from excel
 df_R1 = xl[xl['sector']=='R1']

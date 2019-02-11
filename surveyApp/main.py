@@ -25,7 +25,8 @@ def login():
 def questionsUpload():
     survey = request.args.get('survey')
     company = request.args.get('company')
-    command = 'python C:/Users/bhara/PycharmProjects/Survey/questionsExtraction.py ' + company+ ' ' +survey
+    filename = request.args.get('filename')
+    command = 'python C:/Users/bhara/PycharmProjects/Survey/questionsExtraction.py ' + company+ ' ' +survey +' ' +filename
     os.system(command)
     ###os.system('python C:/Users/bhara/PycharmProjects/Survey/questionsExtractions.py {} {}'.format(company,survey))
     return 'Upload Done -- replace this with web page'
@@ -35,8 +36,8 @@ def questionsUpload():
 def usersUpload():
     survey = request.args.get('survey')
     company = request.args.get('company')
-
-    command = 'python C:/Users/bhara/PycharmProjects/Survey/usersExtraction.py ' + company+ ' ' +survey
+    filename = request.args.get('filename')
+    command = 'python C:/Users/bhara/PycharmProjects/Survey/usersExtraction.py ' + company+ ' ' +survey +' ' +filename
     os.system(command)
     return 'Upload Done -- replace this with web page'
 

@@ -85,7 +85,7 @@ def chartsOne():
     survey = request.args.get('survey')
     company = request.args.get('company')
     userid= request.args.get('userid')
-    host,base,colection,dbuser,pwd=bl.mongoInit()
+    host,base,colection,dbuser,pwd=bl.mongoInit('BKBASE')
 
 
     df=pd.DataFrame(columns=['sector','subsector','cid','qid','qscore','qconfidence'])
@@ -198,10 +198,34 @@ def getSinglePie():
     df=pd.DataFrame(jsonres)
 
     data=cl.pie(df)
-
     return data
 
 
+@app.route('/getSingleBar', methods=['GET'])
+def getSingleBar():
+
+    survey = request.args.get('survey')
+    company = request.args.get('company')
+    userid= request.args.get('userid')
+
+    r = requests.get("http://127.0.0.1:5000/chartsOne?survey={}&company={}&userid={}".format(survey,company,userid))
+    jsonres=r.json()
+    df=pd.DataFrame(jsonres)
+
+    data=cl.bar(df)
+    return data
+
+
+
+@app.route('/getQuestions', methods=['GET'])
+def getQuestions():
+    survey = request.args.get('survey')
+    company = request.args.get('company')
+    sector = request.args.get('sector')
+    host,base,colection,dbuser,pwd=bl.mongoInit('questions')
+
+
+    data=bl.getSurveyQuestions(survey,company,host,base,colection,dbuser,pwd,sector)
 
 
 if __name__ == '__main__':

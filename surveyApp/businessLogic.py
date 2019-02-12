@@ -107,11 +107,11 @@ def getMails(survey,company,department):
 
 
 def sqlConnect():
-    database_username = 'root'
-    database_password = 'root'
-    database_ip       = 'localhost'
-    database_name     = 'BKBASE'
-    db = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}@{2}/{3}'.format(database_username, database_password,database_ip, database_name))
+    dbinstance_usr = 'root'
+    dbinstance_pwd = 'root'
+    dbinstance_ip       = 'localhost'
+    schema     = 'BKBASE'
+    db = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}@{2}/{3}'.format(dbinstance_usr, dbinstance_pwd,dbinstance_ip, schema))
     return db
 
 def activateSurvey(survey,company,department):
@@ -153,10 +153,29 @@ def getSurveyDetailsByCid(userid,survey,company,host,base,colection,user,pwd,sub
    document = col.aggregate(query)
    return document
 
-def mongoInit():
+def mongoInit(colection):
     host='localhost'
     base='BKBASE'
     colection='users'
     user='root'
     pwd='root'
     return host,base,colection,user,pwd
+
+
+def getSurveyQuestions(sur,comp,host,base,colection,user,pwd,sector):
+   col=mongoConnect(host,base,colection,user,pwd)
+
+   sur='%s' % sur
+   sur=sur.strip("'")
+   comp='%s' % comp
+   comp=comp.strip("'")
+   sector='%s' % sector
+   sector=sector.strip("'")
+
+   query = [ {'survey':sur,'company':comp},{ sector: 1 }]
+   print("HII", query)
+   document = col.find({'survey':"ITH",'company':"MYSUR"},{ 'R1': 1 })
+
+   for i in document:
+       print(i)
+   return document

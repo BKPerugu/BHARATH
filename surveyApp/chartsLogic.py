@@ -55,3 +55,30 @@ def pie(df):
 
     data = json.dumps({'R1': pieR1, 'R2': pieR2, 'R3':pieR3, 'R4':pieR4})
     return data
+
+
+def bar(df):
+
+    barR1=[]
+    barR1.append(round(float(df[(df['sector']=='R1') & (df['subsector']=='Physical')]['subsector_avg'].unique()),2))
+    barR1.append(round(float(df[(df['sector']=='R1') & (df['subsector']=='Organisational')]['subsector_avg'].unique()),2))
+    barR1.append(round(float(df[(df['sector']=='R1') & (df['subsector']=='Technical')]['subsector_avg'].unique()),2))
+
+    barR2=[]
+    barR2.append(round(float(df[(df['sector']=='R2') & (df['subsector']=='Physical')]['subsector_avg'].unique()),2))
+    barR2.append(round(float(df[(df['sector']=='R2') & (df['subsector']=='Organisational')]['subsector_avg'].unique()),2))
+    barR2.append(round(float(df[(df['sector']=='R2') & (df['subsector']=='Technical')]['subsector_avg'].unique()),2))
+
+    barR3=[]
+    barR3.append(round(float(df[(df['sector']=='R3') & (df['subsector']=='Physical')]['subsector_avg'].unique()),2))
+    barR3.append(round(float(df[(df['sector']=='R3') & (df['subsector']=='Organisational')]['subsector_avg'].unique()),2))
+    barR3.append(round(float(df[(df['sector']=='R3') & (df['subsector']=='Technical')]['subsector_avg'].unique()),2))
+
+    barR4=[]
+    barR4.append(round(float(df[(df['sector']=='R4') & (df['subsector']=='Physical')]['subsector_avg'].unique()),2))
+    barR4.append(round(float(df[(df['sector']=='R4') & (df['subsector']=='Organisational')]['subsector_avg'].unique()),2))
+    barR4.append(round(float(df[(df['sector']=='R4') & (df['subsector']=='Technical')]['subsector_avg'].unique()),2))
+
+    data = json.dumps({'R1': barR1, 'R2': barR2, 'R3':barR3, 'R4':barR4})
+    return data
+

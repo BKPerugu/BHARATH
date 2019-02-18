@@ -5,12 +5,12 @@ from shutil import copyfile
 
 survey = sys.argv[1]
 company = sys.argv[2]
-xl = sys.argv[3]
+filename = sys.argv[3]
 
 #Needs to be updated from config file
 path='C:/Users/bhara/Desktop/workspace'
 
-#filepath=os.path.join(path, filename)
+filepath=os.path.join(path, filename)
 
 #Getting timestamp
 backup=bl.getTimeStamp()
@@ -21,16 +21,13 @@ jsonFile= 'C:/Users/bhara/Desktop/workspace/db_{}.json'.format(backup)
 copyfile(jFile, jsonFile)
 
 # Parsing excel data
-#xl = pd.read_excel(path+'/'+filename)
-#xl = pd.read_excel(filename)
+xl = pd.read_excel(path+'/'+filename)
 
 #Parsing and divding into sector chunks of data from excel
 df_R1 = xl[xl['sector']=='R1']
 df_R2 = xl[xl['sector']=='R2']
 df_R3 = xl[xl['sector']=='R3']
 df_R4 = xl[xl['sector']=='R4']
-
-print(df_R4)
 
 #initialize Mongo DB details or can be taken from a config file in future
 host='localhost'

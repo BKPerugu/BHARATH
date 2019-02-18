@@ -3,10 +3,15 @@ import requests
 import businessLogic as bl
 import os
 import pandas as pd
+from shutil import copyfile
 import chartsLogic as cl
 import json
 import numpy as np
 import functools as ft
+from flask_jsonpify import jsonify
+import pprint
+import sqlalchemy
+
 
 sectors=['R1','R2','R3','R4']
 subsectors=['Physical','Organisational','Technical']
@@ -15,30 +20,85 @@ app = Flask(__name__)
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+
+
 @app.route('/')
 def login():
     return "<u><b>Login Page</u></b>"
 ## Redirect to login page
 
 
-@app.route('/questionsUpload', methods=['GET'])
+@app.route('/questionsUpload', methods=['GET','POST'])
 def questionsUpload():
     survey = request.args.get('survey')
     company = request.args.get('company')
-    filename = request.args.get('filename')
-    command = 'python C:/Users/bhara/PycharmProjects/Survey/questionsExtraction.py ' + company+ ' ' +survey +' ' +filename
-    os.system(command)
-    ###os.system('python C:/Users/bhara/PycharmProjects/Survey/questionsExtractions.py {} {}'.format(company,survey))
+    file = request.files['file']
+    df = pd.read_excel(file)
+
+    #Getting timestamp
+    backup=bl.getTimeStamp()
+    
+    #code pending for taking backup of this json
+    jFile= 'C:/Users/bhara/Desktop/workspace/db.json'
+    jsonFile= 'C:/Users/bhara/Desktop/workspace/db_{}.json'.format(backup)
+    copyfile(jFile, jsonFile)
+
+    #Parsing and divding into sector chunks of data from excel
+    df_R1 = df[df['sector']=='R1']
+    df_R2 = df[df['sector']=='R2']
+    df_R3 = df[df['sector']=='R3']
+    df_R4 = df[df['sector']=='R4']
+    
+    #initialize Mongo DB details or can be taken from a config file in future
+    host='localhost'
+    database='BKBASE'
+    collection='questions'
+    user='root'
+    pwd='Blackpearl'
+    
+    
+    #update the db.json file with related info
+    bl.parseDF(df_R1,df_R2,df_R3,df_R4,jsonFile,survey,company)
+    
+    #push json to mongo
+    bl.pushMongoDB(host,database,collection,jsonFile,user,pwd,survey,company)
+    
+    #function to clean the workspace and close all handlers and files
+    #bl.cleanup()
+    
     return 'Upload Done -- replace this with web page'
 
 
-@app.route('/usersUpload', methods=['GET'])
+@app.route('/usersUpload', methods=['GET','POST'])
 def usersUpload():
     survey = request.args.get('survey')
     company = request.args.get('company')
-    filename = request.args.get('filename')
-    command = 'python C:/Users/bhara/PycharmProjects/Survey/usersExtraction.py ' + company+ ' ' +survey +' ' +filename
-    os.system(command)
+    file = request.files['file']
+    df = pd.read_excel(file)
+
+    #Parsing data from excel
+    df=df.sort_values(by ='username', ascending=True)
+    df['company']=company
+    df['survey']=survey
+    df['password']='default123'
+    df['isValid']='False'
+    df['activateSurvey']='False'
+    df.set_index('username',inplace=True)
+
+    database_username = 'root'
+    database_password = 'root'
+    database_ip       = 'localhost'
+    database_name     = 'BKBASE'
+    database_connection = sqlalchemy.create_engine('mysql+pymysql://{0}:{1}@{2}/{3}'.format(database_username, database_password,database_ip, database_name))
+
+
+    # write the DataFrame to a table in the sql database
+    df.to_sql(con=database_connection, name='userdetails', if_exists='append')
+
+
+
+    #command = 'python C:/Users/bhara/PycharmProjects/Survey/usersExtraction.py ' + company+ ' ' +survey +' ' +filename
+    #os.system(command)
     return 'Upload Done -- replace this with web page'
 
 
@@ -51,33 +111,6 @@ def releaseSurvey():
     mail_list=list(bl.getMails(survey,company,department))
     bl.pushSurvey(mail_list)
 
-@app.route('/upload', methods=['GET'])
-def upload():
-    folder_name = request.form['superhero']
-    '''
-    # this is to verify that folder to upload to exists.
-    if os.path.isdir(os.path.join(APP_ROOT, 'files/{}'.format(folder_name))):
-        print("folder exist")
-    '''
-    target = os.path.join(APP_ROOT, 'files/{}'.format(folder_name))
-    print(target)
-    if not os.path.isdir(target):
-        os.mkdir(target)
-    print(request.files.getlist("file"))
-    for upload in request.files.getlist("file"):
-        print(upload)
-        print("{} is the file name".format(upload.filename))
-        filename = upload.filename
-        # This is to verify files are supported
-
-        destination = "/".join([target, filename])
-        print("Accept incoming file:", filename)
-        print("Save it to:", destination)
-        upload.save(destination)
-
-    # return send_from_directory("images", filename, as_attachment=True)
-    return render_template("complete.html", image_name=filename)
-
 
 @app.route('/chartsOne', methods=['GET'])
 def chartsOne():
@@ -85,7 +118,7 @@ def chartsOne():
     survey = request.args.get('survey')
     company = request.args.get('company')
     userid= request.args.get('userid')
-    host,base,colection,dbuser,pwd=bl.mongoInit('BKBASE')
+    host,base,colection,dbuser,pwd=bl.mongoInit('users')
 
 
     df=pd.DataFrame(columns=['sector','subsector','cid','qid','qscore','qconfidence'])
@@ -226,6 +259,16 @@ def getQuestions():
 
 
     data=bl.getSurveyQuestions(survey,company,host,base,colection,dbuser,pwd,sector)
+
+
+
+@app.route('/temp', methods=['GET', 'POST'])
+def temp():
+   file = request.files['file']
+   df = pd.read_excel(file)
+   print(df)
+   return 'done'
+
 
 
 if __name__ == '__main__':

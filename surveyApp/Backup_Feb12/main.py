@@ -4,6 +4,7 @@ import businessLogic as bl
 import os
 import pandas as pd
 import chartsLogic as cl
+import json
 import numpy as np
 import functools as ft
 
@@ -24,7 +25,8 @@ def login():
 def questionsUpload():
     survey = request.args.get('survey')
     company = request.args.get('company')
-    command = 'python C:/Users/bhara/PycharmProjects/Survey/questionsExtraction.py ' + company+ ' ' +survey
+    filename = request.args.get('filename')
+    command = 'python C:/Users/bhara/PycharmProjects/Survey/questionsExtraction.py ' + company+ ' ' +survey +' ' +filename
     os.system(command)
     ###os.system('python C:/Users/bhara/PycharmProjects/Survey/questionsExtractions.py {} {}'.format(company,survey))
     return 'Upload Done -- replace this with web page'
@@ -34,8 +36,8 @@ def questionsUpload():
 def usersUpload():
     survey = request.args.get('survey')
     company = request.args.get('company')
-
-    command = 'python C:/Users/bhara/PycharmProjects/Survey/usersExtraction.py ' + company+ ' ' +survey
+    filename = request.args.get('filename')
+    command = 'python C:/Users/bhara/PycharmProjects/Survey/usersExtraction.py ' + company+ ' ' +survey +' ' +filename
     os.system(command)
     return 'Upload Done -- replace this with web page'
 
@@ -187,15 +189,43 @@ def chartsOne():
 @app.route('/getSinglePie', methods=['GET'])
 def getSinglePie():
 
-
-    r = requests.get("http://127.0.0.1:5000/chartsOne?survey='Quarter%201'&company='ITH'&userid='588'")
+    survey = request.args.get('survey')
+    company = request.args.get('company')
+    userid= request.args.get('userid')
+    #r = requests.get("http://127.0.0.1:5000/chartsOne?survey='Quarter%201'&company='ITH'&userid='588'")
+    r = requests.get("http://127.0.0.1:5000/chartsOne?survey={}&company={}&userid={}".format(survey,company,userid))
     jsonres=r.json()
     df=pd.DataFrame(jsonres)
 
-  #  df= chartsOne(survey='Quarter%201',company='ITH',userid='588')
-    return "Done"
+    data=cl.pie(df)
+    return data
 
 
+@app.route('/getSingleBar', methods=['GET'])
+def getSingleBar():
+
+    survey = request.args.get('survey')
+    company = request.args.get('company')
+    userid= request.args.get('userid')
+
+    r = requests.get("http://127.0.0.1:5000/chartsOne?survey={}&company={}&userid={}".format(survey,company,userid))
+    jsonres=r.json()
+    df=pd.DataFrame(jsonres)
+
+    data=cl.bar(df)
+    return data
+
+
+
+@app.route('/getQuestions', methods=['GET'])
+def getQuestions():
+    survey = request.args.get('survey')
+    company = request.args.get('company')
+    sector = request.args.get('sector')
+    host,base,colection,dbuser,pwd=bl.mongoInit()
+
+
+    data=bl.getSurveyQuestions(survey,company,host,base,colection,dbuser,pwd,sector)
 
 
 if __name__ == '__main__':
